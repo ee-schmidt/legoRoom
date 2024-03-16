@@ -6,6 +6,10 @@ TagManager:
   tags:
   - red1
   - GoFreeBuild
+  - blue2
+  - yellow3
+  - green4
+  - orange5
   layers:
   - Default
   - TransparentFX
