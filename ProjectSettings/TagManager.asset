@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - red1
+  - GoFreeBuild
   layers:
   - Default
   - TransparentFX
