@@ -5,6 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Threading;
+using System;
 
 
 public class isBuilt : MonoBehaviour
@@ -18,8 +19,6 @@ public class isBuilt : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float remainingTime;
 
-    
-
     void Update()
     {
         if (remainingTime > 0)
@@ -30,7 +29,9 @@ public class isBuilt : MonoBehaviour
         {
             remainingTime = 0;
             timerText.color = Color.red;
-            SceneManager.LoadScene(0);
+            System.Random rand = new System.Random();
+            int newScene = rand.Next(1, 5);
+            SceneManager.LoadScene(newScene);
         }
         
         int minutes = Mathf.FloorToInt(remainingTime / 60);
