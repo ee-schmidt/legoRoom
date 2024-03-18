@@ -14,34 +14,22 @@ public class isBuilt : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float remainingTime;
 
-    //teleport to winning screen variable declaration
-    private bool teleportOccurred = false;
-
     void Update()
     {
-        if (!teleportOccurred)
+        if (remainingTime > 0)
         {
-            if (remainingTime > 0)
-            {
-                remainingTime -= Time.deltaTime;
-            }
-            else if (remainingTime == 0 || remainingTime < 0)
-            {
-                remainingTime = 0;
-                timerText.color = Color.red;
-                int newScene = UnityEngine.Random.Range(0, 4);
-                SceneManager.LoadScene(newScene);
-            }
-
-            int minutes = Mathf.FloorToInt(remainingTime / 60);
-            int seconds = Mathf.FloorToInt(remainingTime % 60);
-            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            remainingTime -= Time.deltaTime;
         }
-    }
-    
-    public void OnTeleportation()
-    {
-        teleportOccurred = true;
-        SceneManager.LoadScene(4);
+        else if (remainingTime == 0 || remainingTime < 0)
+        {
+            remainingTime = 0;
+            timerText.color = Color.red;
+            int newScene = UnityEngine.Random.Range(0, 4);
+            SceneManager.LoadScene(newScene);
+        }
+
+        int minutes = Mathf.FloorToInt(remainingTime / 60);
+        int seconds = Mathf.FloorToInt(remainingTime % 60);
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
